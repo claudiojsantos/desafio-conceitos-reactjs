@@ -13,7 +13,15 @@ function App() {
   }, [])
 
   async function handleAddRepository() {
-    // TODO
+    const response = await api.post('repositories', {
+      title: `Projeto Novos Conceitos ${Date.now()}`,
+	    url: "https://github.com/claudiojsantos/desafio-conceitos-nodejs.git",
+	    techs: ["tech 1", "tech 2"]
+    })
+
+    const repo = response.data
+
+    setRepositories([...repositories, repo])
   }
 
   async function handleRemoveRepository(id) {
